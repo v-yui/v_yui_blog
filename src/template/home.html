@@ -1,0 +1,40 @@
+<body>
+    <div id="homeWrap">
+        <h1>yui's</h1>
+        <div>
+            <div id="sky">
+                <div id="sun"></div>
+                <div id="tree1" class="tree"></div>
+                <div id="tree2" class="tree"></div>
+                <div id="tree3" class="tree"></div>
+            </div>
+            <div id="moon"></div>
+        </div>
+        <h1>Blog</h1>
+    </div>
+</body>
+<script>
+    const sky = document.getElementById('sky');
+    const sun = sky.children[0];
+    const moon = document.getElementById('moon');
+    sky.addEventListener('mouseover', () => {
+        let now = new Date();
+        let hour = now.getHours();
+        // 依据当前时间控制部分样式
+        if (7 < hour && hour < 19) {
+            hour = Math.abs(13 - hour);
+            console.log(hour);
+            sun.style.transform = `translate(-${45 + hour}px, ${50 + hour * 10}px)`;
+            sky.style.filter = `brightness(${109 - hour}%)`;
+        } else {
+            sky.style.filter = `brightness(15%)`;
+            moon.style.opacity = 1;
+        }
+
+    })
+    sky.addEventListener('mouseleave', () => {
+        sun.style.transform = 'translate(-45px, 290px)';
+        sky.style.filter = '';
+        moon.style.opacity = 0;
+    })
+</script>

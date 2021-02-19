@@ -1,0 +1,85 @@
+#readWarp {
+    height: 100%;
+    background-image: linear-gradient(to bottom, @navBack 30%, white);
+    background-attachment: fixed;
+    overflow: auto;
+    padding: 0 30px;
+    // position: fixed;
+    ol {
+        height: 100%;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: center;
+
+        li {
+            width: 300px;
+            min-height: 350px;
+            padding: 15px;
+            margin: 20px 30px 0 0;
+            display: inline-block;
+            list-style: none;
+            flex-shrink: 0;
+            border-radius: 2px;
+            box-sizing: border-box;
+            font-family: 'STXihei';
+            text-align: justify;
+            box-shadow: @shadow;
+            background-color: white;
+            transition: all .5s;
+
+            img {
+                width: 172px;
+                height: 250px;
+                margin-right: 18px;
+                background-color: @navBack;
+                background-size: contain;
+                float: left;
+                box-shadow: @shadow;
+                border-radius: 3px;
+                transition: all .5s;
+            }
+
+            h2 {
+                margin: 0;
+                font-weight: bolder;
+                color: @navBack - #555;
+            }
+
+            div {
+                margin-top: 15px;
+
+                h4 {
+                    float: left;
+                    margin: 0 10px 0 0;
+                    writing-mode: vertical-lr;
+                    color: @navBack - #333;
+                }
+
+                h6 {
+                    margin: 0;
+                    padding: .5em 0px;
+                    writing-mode: vertical-lr;
+                    color: @navBack - #333;
+                }
+            }
+
+            p {
+                margin: 0;
+                text-indent: 0;
+                color: @navBack - #333;
+            }
+        }
+
+        li:hover {
+            transform: translateY(-30px);
+            box-shadow: 5px 5px 3px rgba(0, 0, 0, .3);
+
+            img {
+                box-shadow: none;
+            }
+        }
+
+    }
+}

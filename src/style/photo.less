@@ -1,0 +1,36 @@
+#photoWarp {
+    width: 100%;
+    background-image: @backColor;
+    padding-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+    div {
+        width: 700px;
+        column-gap: 10px;
+        text-align: center;
+
+        img {
+            margin-top: 5px;
+            border-radius: 2px;
+        }
+    }
+
+    #graph {
+        columns: 3;
+
+        img {
+            width: 230px;
+            filter: brightness(110%) contrast(110%);
+        }
+    }
+
+    #paint {
+        columns: 2;
+
+        img {
+            width: 300px;
+        }
+    }
+}

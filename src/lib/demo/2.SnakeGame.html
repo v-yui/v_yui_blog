@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake</title>
+    <style>
+
+    </style>
+</head>
+
+<body onload="draw()">
+    <canvas id="snake" width="500px" height="500px"></canvas>
+</body>
+
+<script>
+    /*
+    fillRect(x, y, width, height) 绘制一个填充的矩形
+    strokeRect(x, y, width, height) 绘制一个矩形的边框
+    clearRect(x, y, width, height) 清除指定矩形区域，让清除部分完全透明。
+
+    beginPath() 新建一条路径，生成之后，图形绘制命令被指向到路径上生成路径。
+    lineTo(x, y) 绘制直线从当前位置到指定坐标。
+    moveTo(x, y) 将笔触移动到指定的坐标x以及y上。
+    closePath() 闭合路径之后图形绘制命令又重新指向到上下文中。
+    
+    stroke() 通过线条来绘制图形轮廓。
+    fill() 通过填充路径的内容区域生成实心的图形。
+
+    arc(x, y, radius, startAngle, endAngle, anticlockwise) 
+        画一个以（x,y）为圆心的以radius为半径的圆弧（圆），从startAngle开始到endAngle结束，
+        按照anticlockwise给定的方向（默认为顺时针）来生成。
+    quadraticCurveTo(cp1x, cp1y, x, y)
+        绘制二次贝塞尔曲线，cp1x,cp1y为一个控制点，x,y为结束点。
+    bezierCurveTo(cp1x, cp1y, cp2x, cp2y, x, y)
+        绘制三次贝塞尔曲线，cp1x,cp1y为控制点一，cp2x,cp2y为控制点二，x,y为结束点。
+    rect(x, y, width, height)
+        绘制一个左上角坐标为（x,y），宽高为width以及height的矩形。
+
+    Path2D()
+        返回一个新初始化的Path2D对象（可能将某一个路径作为变量——创建一个它的副本，或者将一个包含SVG path数据的字符串作为变量）。
+    Path2D.addPath(path [, transform])​
+        添加了一条路径到当前路径（可能添加了一个变换矩阵）。
+
+    fillStyle = color 设置图形的填充颜色。
+    strokeStyle = color 设置图形轮廓的颜色。 
+    globalAlpha = transparencyValue 设置所有图形的透明度。
+
+    lineWidth = value 设置线条宽度。
+    lineCap = type 设置线条末端样式。
+    lineJoin = type 设定线条与线条间接合处的样式。
+    miterLimit = value 限制当两条线相交时交接处最大长度；所谓交接处长度（斜接长度）是指线条交接处内角顶点到外角顶点的长度。
+    getLineDash() 返回一个包含当前虚线样式，长度为非负偶数的数组。
+    setLineDash(segments) 设置当前虚线样式。
+    lineDashOffset = value 设置虚线样式的起始偏移量。
+    */
+
+    function draw() {
+        const canvas = document.getElementById('snake');
+        const ctx = canvas.getContext('2d');
+
+        let rectangle = new Path2D();
+        rectangle.rect(10, 10, 50, 50);
+
+        let circle = new Path2D();
+        circle.moveTo(125, 35);
+        circle.arc(100, 35, 25, 0, 2 * Math.PI);
+
+        ctx.stroke(rectangle);
+        ctx.stroke(circle);
+    }
+
+</script>
+
+</html>

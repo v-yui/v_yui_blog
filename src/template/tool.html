@@ -1,0 +1,61 @@
+<body>
+    <div id="toolWarp">
+        <ol id="urlList">
+            <!-- 原html中留一个默认展示的节点，其他的动态产生 -->
+            <!-- <li><span>🚀</span><a href="https://github.com/v-yui"></a></li> -->
+        </ol>
+    </div>
+</body>
+<script>
+    const urlListNode = document.getElementById('urlList');
+
+    class urlNode { // li节点中所需的信息集合成类
+        constructor(icon, desc, url) {
+            this.icon = icon;
+            this.desc = desc;
+            this.url = url;
+        }
+    }
+
+    // 接收所需信息并添加入数组便于后续使用
+    function catchUrl(icon, desc, url, packArr) {
+        let node = new urlNode(icon, desc, url);
+        packArr.push(node);
+    }
+
+    // 接收urlNode对象，利用其中信息创建新li条目并加入父节点
+    function putLi(urlObj, parent) {
+        let liNode = document.createElement('li');
+        let spanNode = document.createElement('span');
+        let aNode = document.createElement('a');
+        if (urlObj instanceof urlNode) {
+            spanNode.innerHTML = urlObj.icon; // span标签中的内容
+            aNode.innerHTML = urlObj.desc; // a标签中的内容
+            aNode.href = urlObj.url; // a 标签跳转的链接
+            aNode.target = '_blank'; // 设置在新标签页打开链接
+            liNode.appendChild(spanNode);
+            liNode.appendChild(aNode);
+            parent.appendChild(liNode);
+        }
+    }
+
+    let urlPack = [];
+    // 暂时不对信息做分类，此处要添加信息则直接多调用一次catchUrl()
+    catchUrl('Git', 'gitHub —— 自己的gitHub主页，仓库里东西不多。', 'https://github.com/v-yui', urlPack);
+    catchUrl('阮', '阮一峰博客', 'http://www.ruanyifeng.com/blog/', urlPack);
+    catchUrl('廖', '廖雪峰博客', 'https://www.liaoxuefeng.com/', urlPack);
+    catchUrl('牛', '牛客网题库', 'https://www.nowcoder.com/contestRoom', urlPack);
+    catchUrl('B', '哔哩哔哩主站', 'https://www.bilibili.com/', urlPack);
+    catchUrl('B', '全历史 —— 了解和学习历史知识。', 'https://www.allhistory.com/', urlPack);
+
+
+    // 由于采用column分栏，若条目为奇数会被分割，暂时没有合适的解决方案
+    // 故此处检查一遍数组长度，若为奇数则添加一个空节点
+    if (urlPack.length % 2 !== 0) {
+        catchUrl('❀', '空白占位', 'http://', urlPack);
+    }
+
+    for (let i = 0; i < urlPack.length; i++) {
+        putLi(urlPack[i], urlListNode);
+    }
+</script>

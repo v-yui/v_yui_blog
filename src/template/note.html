@@ -1,0 +1,47 @@
+<body>  
+    <nav id="noteNav">
+        <span id="nail"></span>
+        <ol id="flipList">
+            <li>
+                ❀ 阅读笔记 ❀
+                <ol>
+                    <li>JS高级程序设计</li>
+                    <li>图解HTTP</li>
+                    <li>CSS Mastery</li>
+                </ol>
+            </li>
+            <li>
+                ✧ 个人笔记 ✧
+                <ol>
+                    <li>node学习</li>
+                    <li>webpack学习</li>
+                    <li>eventLoop</li>
+                    <li>牛客刷题知识点</li>
+                    <li>正则表达式</li>
+                </ol>
+            </li>
+
+        </ol>
+    </nav>
+    <article id="noteBox"></article>
+</body>
+<script>
+    const noteNav = document.getElementById('flipList');
+    const noteBox = document.getElementById('noteBox');
+    const readNode = noteNav.children[0].children[0];
+    const selfNode = noteNav.children[1].children[0];
+
+    // 为笔记列表添加点击事件
+    function putNote(noteNode, noteName) {
+        const length = noteNode.children.length;
+        for (let i = 0; i < length; i++) {
+            noteNode.children[i].addEventListener('click', () => {
+                noteBox.innerHTML = window.notes[noteName][i];
+            })
+        }
+    }
+    putNote(readNode, 'readNote');
+    putNote(selfNode, 'selfNote');
+    readNode.children[0].click(); // 默认展示JS高程笔记
+    const nail = document.getElementById('nail');
+</script>

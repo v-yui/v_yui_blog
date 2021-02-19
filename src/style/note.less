@@ -1,0 +1,93 @@
+// 左侧列表栏样式
+#noteNav {
+    position: fixed;
+    top: 70px;
+    left: 10px;
+    width: 170px;
+    padding: 0;
+    margin: 0;
+    border-radius: 10px 10px 2px 2px;
+    background-color: @navBack;
+    box-shadow: @shadow;
+    transition: all .5s;
+
+    // 画一个小钉子
+    span {
+        display: block;
+        width: 10px;
+        height: 10px;
+        margin: 5px auto 0px auto;
+        background-image: linear-gradient(140deg, rgb(161, 161, 161) 50%, rgb(216, 215, 215));
+        border-radius: 50%;
+        box-shadow: inset .2px .5px 0px rgb(235, 235, 235),
+            1px 1px 3px rgba(50, 50, 50, .7);
+        transition: all .5s;
+    }
+
+    ol {
+        padding: 5px;
+        margin: 0;
+        box-sizing: border-box;
+        text-align: center;
+
+        li {
+            list-style: none;
+            color: white;
+
+            ol {
+                margin: 5px 0;
+                background-color: white;
+                box-shadow: inset @shadow;
+                transition: all .5s;
+
+                li {
+                    padding: 0 10px;
+                    box-sizing: border-box;
+                    line-height: 1.5rem;
+                    list-style: none;
+                    color: @navBack;
+                    border-bottom: 1px solid @navBack;
+                    cursor: pointer;
+                    font-family: 'STXihei';
+                    transition: all .5s;
+                }
+            }
+        }
+    }
+}
+
+// 鼠标悬浮的效果集合
+#noteNav:hover {
+    box-shadow: none;
+
+    span {
+        box-shadow: inset .2px .5px 0px rgb(235, 235, 235),
+            1px 1px 5px rgba(50, 50, 50, .8);
+
+    }
+
+    ol li ol:hover {
+        box-shadow: inset 0 0 0 transparent,
+            @shadow;
+
+        li:hover {
+            letter-spacing: .13rem;
+            color: rgb(159, 157, 189);
+            // text-shadow: 2px 2px 5px rgb(192, 192, 192);
+            border-bottom: 1px solid transparent;
+        }
+
+    }
+}
+
+#noteBox {
+    min-width: 700px;
+    margin: 30px 120px 20px 200px;
+    padding: 20px 20px;
+    box-sizing: border-box;
+    border: 7px double @navBack;
+    border-radius: 0 20px 20px 0;
+    color: @fontColor;
+    overflow: hidden;
+    font-family: 'STXihei';
+}

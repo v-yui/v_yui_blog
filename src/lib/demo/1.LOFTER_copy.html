@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .wrapper {
+            background-color: #EDEDEF;
+            display: flex;
+            justify-content: center;
+            /* overflow: hidden; */
+        }
+
+        header {
+            background-color: #1F1F1F;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+
+        }
+
+        .head_ol {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            font-size: larger;
+            color: #DADCE0;
+            display: grid;
+            grid-template-columns: 130px 80px 80px 80px 230px 56px 56px 56px 56px;
+            grid-template-rows: 64px;
+            place-items: center;
+            justify-content: center;
+        }
+
+        h2 {
+            color: white;
+        }
+
+        main {
+            margin-top: 90px;
+            width: 928px;
+            padding: auto;
+            display: grid;
+            grid-template-columns: 660px 226px;
+        }
+        img {
+            width: 100px;
+            height: 100px;
+            background-color: rgb(160, 188, 241);
+            display: inline-block;
+            border: 1px solid rgb(189, 192, 235);
+            box-sizing: border-box;
+        }
+        .left_main {
+            width: 660px;
+        }
+        .new_ol {
+            margin: 0;
+            padding: 0;
+            display: grid;
+            list-style: none;
+            font-size: 50px;
+            color: rgb(160, 188, 241);
+            background-color: white;
+            grid-template-columns: repeat(6, 110px);
+            grid-template-rows: 110px;
+            place-items: center;
+        }
+        .right_main {
+            justify-self: right;
+        }
+        .right_main>* {
+            border: 1px solid rgb(189, 192, 235);
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <!-- 顶端固定的导航条 -->
+        <header>
+            <ol class="head_ol">
+
+                    <h2>lofter</h2>
+
+                <li>首页</li>
+                <li>发现</li>
+                <li>APP</li>
+                <li><input type="text"></li>
+                <li>🔔</li>
+                <li>✉</li>
+                <li>⚙</li>
+                <li>┅</li>
+            </ol>
+        </header>
+        q
+        <!-- 垂直居中的主要内容 -->
+        <main>
+            <!-- 左边的大块主要内容,使用flex布局 -->
+            <div class="left_main">
+                <!-- 新内容发布选择栏，使用grid布局 -->
+                <ol class="new_ol">
+                    <img>
+                    <li>字</li>
+                    <li>图</li>
+                    <li>音</li>
+                    <li>频</li>
+                    <li>文</li>
+                </ol>
+                <!-- 首页内容 -->
+                <div>
+                    <section>
+                        <img>
+                        <article>
+                            <h6>纪伯伦</h6>
+                            <h3>沙与沫</h3>
+                            <img>
+                            <p>我永远在沙岸上行走，
+                                在沙土和泡沫的中间。
+                                高潮会抹去我的脚印，
+                                风也会把泡沫吹走。
+                                但是海洋和沙岸
+                                却将永远存在。</p>
+                        </article>
+                    </section>
+                    <section>
+                        <img>
+                        <article>
+                            <h6>纪伯伦</h6>
+                            <h3>沙与沫</h3>
+                            <img>
+                            <p>我永远在沙岸上行走，
+                                在沙土和泡沫的中间。
+                                高潮会抹去我的脚印，
+                                风也会把泡沫吹走。
+                                但是海洋和沙岸
+                                却将永远存在。</p>
+                        </article>
+                    </section>
+                    <section>
+                        <img>
+                        <article>
+                            <h6>纪伯伦</h6>
+                            <h3>沙与沫</h3>
+                            <img>
+                            <p>我永远在沙岸上行走，
+                                在沙土和泡沫的中间。
+                                高潮会抹去我的脚印，
+                                风也会把泡沫吹走。
+                                但是海洋和沙岸
+                                却将永远存在。</p>
+                        </article>
+                    </section>
+                </div>
+            </div>
+            <!-- 右边的小块次要内容，使用flex布局 -->
+            <div class="right_main">
+                <div class="info_top">
+                    <div class="name">yui</div>
+                    <div class="folloing">关注</div>
+                    <div class="follo">粉丝</div>
+                </div>
+                <div class="info_bottom">
+                    <ol class="info_ol">
+                        <li>文章</li>
+                        <li>合集</li>
+                        <li>喜欢</li>
+                        <li>钱包</li>
+                        <li>草稿</li>
+                        <li>个人主页设置</li>
+                        <li>批量管理文章</li>
+                    </ol>
+                </div>
+                <div class="other_visits">
+                    <h4>使用手机访问lofter</h4>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>

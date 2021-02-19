@@ -1,0 +1,110 @@
+@navBack: #7ba2eb; // 所有文件共用的主题色
+@fontColor: rgb(104, 90, 73); // 文字颜色
+@shadow: 3px 3px 3px rgba(0, 0, 0, .3); // 阴影颜色
+@backColor: linear-gradient(to bottom, @navBack, white);
+
+@import "./home.less";
+@import "./note.less";
+@import "./read.less";
+@import "./tool.less";
+@import "./photo.less";
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+// Home页导航条
+#mainNav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50px;
+    background-color: @navBack;
+    z-index: 100;
+
+    ol {
+        margin: 0;
+        padding: 0;
+        display: grid;
+        grid-template-columns: repeat(5, 130px);
+        grid-template-rows: 50px;
+        place-items: center;
+
+        li {
+            padding: 10px;
+            color: white;
+            list-style: none;
+            letter-spacing: .2rem;
+            transition: all .5s;
+            border-radius: 8px;
+            font-family: Georgia, serif;
+            font-size: 1.1rem;
+            font-family: 'youyuan';
+
+
+        }
+
+        li:hover {
+            transform: translateY(-2px);
+            background-color: rgba(255, 255, 255, 1);
+            box-shadow: @shadow;
+            letter-spacing: .11rem;
+            color: @navBack;
+            cursor: pointer;
+        }
+
+        li::after {
+            content: ' ';
+            width: 10px;
+            height: 10px;
+            display: inline-block;
+            box-sizing: border-box;
+            border-top: 3px double white;
+            border-right: 3px double white;
+            transform: rotate(45deg);
+            transition: all .5s;
+        }
+
+        li:hover::after {
+            border-color: @navBack;
+            transform: rotate(225deg);
+        }
+
+        li:active::after {
+            transform: rotate(135deg);
+        }
+    }
+
+    #gitLogo {
+        width: 30px;
+        height: 30px;
+        position: fixed;
+        top: 8px;
+        right: 8px;
+        background-image: url(./img/gitHub_logo.jpg);
+        filter: brightness(120%);
+        background-size: contain;
+        border-radius: 50%;
+        border: 1px solid white;
+        box-shadow: inset 0px 0px 5px white;
+        cursor: pointer;
+        transition: all .4s;
+    }
+
+    #gitLogo:hover {
+        box-shadow: none;
+
+    }
+}
+
+#container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin-top: 50px;
+}
