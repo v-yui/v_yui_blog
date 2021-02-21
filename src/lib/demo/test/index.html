@@ -61,6 +61,11 @@
             alertMsg: function () {
                 alert('来自v-on绑定事件的提示！')
             }
+        },
+        watch: {
+            dt6 : function (newol, old) {
+                alert(newol);
+            }
         }
     })
 </script>
