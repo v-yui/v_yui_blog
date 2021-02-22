@@ -25,6 +25,7 @@
         <p v-if="dt3">显示中···</p>
         <ol>
             <li v-for="item in dt4">{{ item.text }}</li>
+            <!-- <li v-for="{item, index} in dt4">{{ item.text }}</li> -->
         </ol>
         <button v-on:click="alertMsg">alert！</button>
         <input v-model="dt6">

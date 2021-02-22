@@ -10,11 +10,11 @@
 
  指令带有前缀 `v-`，以表示它们是 Vue 提供的特殊 attribute。 指令的职责是，当表达式的值改变时，将其产生的连带影响，响应式地作用于 DOM。 
 
-- `{{}}`  “Mustache”语法将数据渲染进DOM系统，支持单个JS表达式（ 模板表达式都被放在沙盒中，只能访问全局变量的一个[白名单](https://github.com/vuejs/vue/blob/v2.6.10/src/core/instance/proxy.js#L9)，如 `Math` 和 `Date` 。不能在模板表达式中试图访问用户定义的全局变量。 ）。
-- `v-bind` 缩写`:`绑定元素attribute，使其与Vue实例中的property一致。
-- `v-if` 控制元素是否显示。
-- `v-for` 渲染一个数据列表。
-- `v-on`  缩写`@`添加一个事件监听器，调用Vue实例中定义的方法。
+- `{{}}`  “Mustache”语法将数据渲染进DOM系统，支持单个JS表达式（ 模板表达式都被放在沙盒中，只能访问全局变量的一个[白名单](https://github.com/vuejs/vue/blob/v2.6.10/src/core/instance/proxy.js#L9)，如 Math和 Date 。不能在模板表达式中试图访问用户定义的全局变量。 ）。绑定style时，对于需要添加前缀的property，vue会自动侦测并添加。
+- `v-bind` 缩写`:` 绑定表达式到元素attribute，使其与实例中的property一致。 表达式结果的类型除了字符串之外，还可以是对象或数组。 
+- `v-if` 控制元素是否显示，只有当条件为真时才会渲染（另外还有`v-else`、`v-else-if`）。与其相似的`v-show`则不论如何都会被渲染，只是简单的进行显示与否的切换，v-if 切换时开销更大。
+- `v-for` 渲染一个数据列表，若为数组则可接收第二个参数index；若为对象可接受key、index。也接受整数来重复模板如`v-for="n in 10"`。优先级低于v-if，即二者一起使用时v-if将重复运行于每个item。在组件上使用时，`key`是
+- `v-on`  缩写`@` 添加一个事件监听器，调用Vue实例中定义的方法。
 - `v-model` 表单输入和应用状态的双向绑定。
 - `v-once` 执行一次性插值，当数据改变时不更新插值处内容。
 - `v-html` 输出真正的HTML。
