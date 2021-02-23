@@ -4,20 +4,33 @@
 
  除了数据 property，Vue 实例还暴露了一些有用的实例 property 与方法。它们都有前缀 `$`，以便与用户定义的 property 区分开来。例如： ` vm.$el === document.getElementById('example')  `。
 
+ 特殊变量`$event` 可以将原始DOM事件传入v-on内联语句。
+
 
 
 ### 指令
 
  指令带有前缀 `v-`，以表示它们是 Vue 提供的特殊 attribute。 指令的职责是，当表达式的值改变时，将其产生的连带影响，响应式地作用于 DOM。 
 
-- `{{}}`  “Mustache”语法将数据渲染进DOM系统，支持单个JS表达式（ 模板表达式都被放在沙盒中，只能访问全局变量的一个[白名单](https://github.com/vuejs/vue/blob/v2.6.10/src/core/instance/proxy.js#L9)，如 Math和 Date 。不能在模板表达式中试图访问用户定义的全局变量。 ）。绑定style时，对于需要添加前缀的property，vue会自动侦测并添加。
-- `v-bind` 缩写`:` 绑定表达式到元素attribute，使其与实例中的property一致。 表达式结果的类型除了字符串之外，还可以是对象或数组。 
-- `v-if` 控制元素是否显示，只有当条件为真时才会渲染（另外还有`v-else`、`v-else-if`）。与其相似的`v-show`则不论如何都会被渲染，只是简单的进行显示与否的切换，v-if 切换时开销更大。
-- `v-for` 渲染一个数据列表，若为数组则可接收第二个参数index；若为对象可接受key、index。也接受整数来重复模板如`v-for="n in 10"`。优先级低于v-if，即二者一起使用时v-if将重复运行于每个item。在组件上使用时，`key`是
-- `v-on`  缩写`@` 添加一个事件监听器，调用Vue实例中定义的方法。
-- `v-model` 表单输入和应用状态的双向绑定。
-- `v-once` 执行一次性插值，当数据改变时不更新插值处内容。
-- `v-html` 输出真正的HTML。
+- `{{}}`：“Mustache”语法将数据渲染进DOM系统，支持单个JS表达式（ 模板表达式都被放在沙盒中，只能访问全局变量的一个[白名单](https://github.com/vuejs/vue/blob/v2.6.10/src/core/instance/proxy.js#L9)，如 Math和 Date 。不能在模板表达式中试图访问用户定义的全局变量。 ）。绑定style时，对于需要添加前缀的property，vue会自动侦测并添加。
+- `v-bind`：缩写`:` 绑定表达式到元素attribute，使其与实例中的property一致。 表达式结果的类型除了字符串之外，还可以是对象或数组。 
+- `v-if`：控制元素是否显示，只有当条件为真时才会渲染（另外还有`v-else`、`v-else-if`）。与其相似的`v-show`则不论如何都会被渲染，只是简单的进行显示与否的切换，v-if 切换时开销更大。
+- `v-for`：渲染一个数据列表，若为数组则可接收第二个参数index；若为对象可接受key、index。也接受整数来重复模板如`v-for="n in 10"`。优先级低于v-if，即二者一起使用时v-if将重复运行于每个item。在组件上使用时，`key`是
+- `v-on`：缩写`@` 添加一个事件监听器，调用Vue实例中定义的方法。事件修饰符如下(可串联使用)：
+  - `.stop` - 调用 `event.stopPropagation()`。
+  - `.prevent` - 调用 `event.preventDefault()`。
+  - `.capture` - 添加事件侦听器时使用 capture 模式。
+  - `.self` - 事件是从侦听器绑定的元素本身触发时才触发回调。
+  - `.{keyCode | keyAlias}` - 事件是从特定键触发时才触发回调(可使用按键别名，具体见[文档](https://cn.vuejs.org/v2/guide/events.html))。
+  - `.native` - 监听组件根元素的原生事件。
+  - `.once` - 只触发一次回调。
+  - `.left` - (2.2.0) 点击鼠标左键时触发。
+  - `.right` - (2.2.0) 点击鼠标右键时触发。
+  - `.middle` - (2.2.0) 点击鼠标中键时触发。
+  - `.passive` - (2.3.0) 以 `{ passive: true }` 模式添加侦听器
+- `v-model`：表单输入和应用状态的双向绑定。 本质上是语法糖，监听用户输入事件以更新数据，并对一些极端场景进行特殊处理。 
+- `v-once`：执行一次性插值，当数据改变时不更新插值处内容。
+- `v-html`：输出真正的HTML。
 
 注意： 从 2.6.0 开始 ，可用方括号语法接受JS表达式作动态参数，动态参数是有限制的：它预期会求出字符串，异常情况下则值为 null ；且某些字符如引号和空格是无效的。 浏览器会把 attribute 名全部强制转为小写 。
 
