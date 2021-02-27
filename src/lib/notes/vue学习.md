@@ -115,3 +115,4 @@ var vm = new Vue({
 组件是可复用的Vue实例，所以与`new Vue`接收相同的各种选项如data、watch等。每用一次组件，就会有一个它的新实例被创建。注意，组件的data选项必须是函数，以保证每个实例都能维护独立的数据。
 
  Prop 是在组件上注册的一些自定义 attribute，当一个值传递给一个 prop attribute 时，它就会成为该组件实例的一个 property。 props选项用于包含这个prop数组列表。
+
