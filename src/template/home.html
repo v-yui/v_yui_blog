@@ -1,22 +1,88 @@
 <body>
     <div id="homeWrap">
-        <h1>yui's</h1>
-        <div>
-            <div id="sky">
-                <div id="sun"></div>
-                <div id="tree1" class="tree"></div>
-                <div id="tree2" class="tree"></div>
-                <div id="tree3" class="tree"></div>
+        <!-- 博客名&小太阳 -->
+        <div id="sunTittle">
+            <h1>yui's</h1>
+            <div>
+                <div id="sky">
+                    <div id="sun"></div>
+                    <div id="tree1" class="tree"></div>
+                    <div id="tree2" class="tree"></div>
+                    <div id="tree3" class="tree"></div>
+                </div>
+                <div id="moon"></div>
             </div>
-            <div id="moon"></div>
+            <h1>Blog</h1>
         </div>
-        <h1>Blog</h1>
+
+        <!-- 扑克轮播图 -->
+        <div id="pokerContainer" class="no-select">
+            <div class="poker poker1">
+                <img src="../style/img/book/1.罗生门.png">
+            </div>
+            <div class="poker poker2">
+                <img src="../style/img/book/1.罗生门.png">
+            </div>
+            <div class="poker poker3">
+                <img src="../style/img/book/1.罗生门.png">
+            </div>
+            <div class="poker poker4">
+                <img src="../style/img/book/1.罗生门.png">
+            </div>
+            <div class="poker poker5">
+                <img src="../style/img/book/1.罗生门.png">
+            </div>
+            <div class="poker_top poker5">
+                <p>Click</p>
+            </div>
+        </div>
     </div>
 </body>
 <script>
     const sky = document.getElementById('sky');
     const sun = sky.children[0];
     const moon = document.getElementById('moon');
+
+
+    // 扑克牌轮播图
+    const poker = {
+        poker_else: {},
+        transform_datas: [
+            "rotate(-10deg)",
+            "rotate(-6deg) translate(35%, -12%)",
+            "rotate(-2deg) translate(65%, -19%)",
+            "rotate(2deg) translate(95%, -26%)",
+            "rotate(6deg) translate(125%, -23%)",
+        ],
+        init() {
+            this.poker_else = [...document.getElementsByClassName('poker')];
+            this.poker_else.forEach((ele, index) => {
+                ele.nums = index; // 存储扑克牌的位置号
+            });
+        },
+        move() {
+            console.log('move')
+            this.poker_else.map((ele) => {
+                let nums = ele.nums;
+                if (nums + 1 >= this.poker_else.length) {
+                    nums = 0;
+                    ele.style.transition = "";
+                } else {
+                    nums += 1;
+                    ele.style.transition = "transform 0.3s ease";
+                }
+                ele.style.zIndex = nums;
+                ele.style.transform = this.transform_datas[nums];
+                ele.nums = nums;
+            });
+        }
+    };
+    poker.init();
+    document.querySelector('.poker_top').addEventListener('click', () => {
+        poker.move();
+    });
+
+
     sky.addEventListener('mouseover', () => {
         let now = new Date();
         let hour = now.getHours();
