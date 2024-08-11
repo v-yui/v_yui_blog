@@ -24,6 +24,60 @@
             font-family: 'Georgia';
         }
 
+        .ribbon-3 {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            width: 150px;
+            height: 150px;
+            overflow: hidden;
+          
+            &::before, &::after {
+              content: "";
+              position: absolute;
+            }
+          
+            &::before {
+              left: 8px;
+              width: 40px;
+              height: 8px;
+              border-radius: 8px 8px 0px 0px;
+              background-color: var(--ribbon-primary-color);
+              opacity: .6;
+            }
+          
+            &::after {
+              border-radius: 0px 8px 8px 0px;
+              width: 8px;
+              height: 40px;
+              right: 0px;
+              bottom: 8px;
+              background-color: @navBack;
+              opacity: .6;
+            }
+          
+            & > span {
+              position: absolute;
+              top: 20%;
+              right: -40%;
+              z-index: 2;
+              width: 150%;
+              height: 40px;
+              overflow: hidden;
+              transform: rotate(45deg);
+              border: 1px dashed;
+              box-shadow: 0 0 0 3px @navBack, 0px 21px 5px -18px rgba(0, 0, 0, 0.6);
+              background: @navBack;
+          
+              /* 文本居中 */
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              color: white;
+            }
+          
+          }
+
         #sky {
             width: 400px;
             height: 400px;
@@ -110,7 +164,7 @@
             height: 26rem;
             border: 0.15rem solid #fff;
             border-radius: 1.5rem;
-            background-color: aqua;
+            background-color: rgb(220, 255, 255);
             transform-origin: bottom left;
             overflow: hidden;
         }
@@ -161,5 +215,4 @@
         }
     }
 
-
-}
+ }

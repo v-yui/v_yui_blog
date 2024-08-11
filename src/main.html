@@ -19,6 +19,47 @@
                 <!-- <li>书签 </li> -->
                 <li>相册 </li>
             </ol>
+            <div class="container">
+                <label for="switch">
+                    <input type="checkbox" id="switch">
+                    <div class="toggle-wrapper">
+                        <div class="day-night">
+                        </div>
+                        <div class="tree-left">
+                            <div class="tree"></div>
+                            <div class="trunk">
+                                <div class="branch"></div>
+                                <div class="branch"></div>
+                            </div>
+                        </div>
+                        <div class="tree-right">
+                            <div class="tree-back">
+                                <div class="trunk"></div>
+                            </div>
+                            <div class="tree-front">
+                                <div class="trunk"></div>
+                            </div>
+                        </div>
+                        <div class="moon"></div>
+                        <div class="stars">
+                            <div class="star big-star">
+                                <div class="vertical"></div>
+                                <div class="horizontal"></div>
+                            </div>
+                            <div class="star small-star">
+                                <div class="vertical"></div>
+                                <div class="horizontal"></div>
+                            </div>
+                        </div>
+                        <div class="sun"></div>
+                        <div class="hills">
+                            <div class="hill-left"></div>
+                            <div class="hill-right"></div>
+                        </div>
+                    </div>
+                </label>
+            </div>
+
             <div id="gitLogo"></div>
         </nav>
         <!-- 容器节点，盛装各个展示页 -->
@@ -49,7 +90,7 @@
             }
         }
     }
-    
+
     window.addEventListener('load', () => {
         // 为nav每个子条目添加点击事件以显示对应子页面
 
@@ -66,6 +107,15 @@
             window.open("https://github.com/v-yui");
         })
     })
+    
+    // 切换白天黑夜
+    document.addEventListener('DOMContentLoaded', function () {
+        var checkbox = document.querySelector('input[type="checkbox"]');
+
+        checkbox.addEventListener('change', function () {
+            document.documentElement.classList.toggle('switch');
+        });
+    });
 </script>
 
 </html>
