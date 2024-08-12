@@ -1,0 +1,112 @@
+<body>
+    <div class="scroll-container">
+        <!-- section-1 左侧介绍，右侧动画 -->
+        <div class="section section-1"></div>
+        <div class="section section-2"></div>
+        <div class="section section-3">
+            <!-- 12星图 -->
+            <div id="wrapper">
+                <div class="box one">
+                    <div></div>
+                    <div></div>
+                    <div class="number">1</div>
+                    <span>Cygni</span>
+                </div>
+                <div class="box two">
+                    <div></div>
+                    <div></div>
+                    <div class="number">2</div>
+                    <span>Persei</span>
+                </div>
+                <div class="box three">
+                    <div></div>
+                    <div></div>
+                    <div class="number">3</div>
+                    <span>Canum Venaticorum</span>
+                </div>
+                <div class="box four">
+                    <div></div>
+                    <div></div>
+                    <div class="number">4</div>
+                    <span>Scorpii</span>
+                </div>
+                <div class="box five">
+                    <div></div>
+                    <div></div>
+                    <div class="number">5</div>
+                    <span>Delphini</span>
+                </div>
+                <div class="box six">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div class="number">6</div>
+                    <span>Andromeda</span>
+                </div>
+                <div class="box seven">
+                    <div></div>
+                    <div class="large-star">
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <div class="number">7</div>
+                    <span>Orionis</span>
+                </div>
+                <div class="box eight">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div class="number">8</div>
+                    <span>Cassiopeia</span>
+                </div>
+                <div class="box nine">
+                    <div></div>
+                    <div></div>
+                    <div class="number">9</div>
+                    <span>Herculis</span>
+                </div>
+                <div class="box ten">
+                    <div></div>
+                    <div></div>
+                    <div class="number">10</div>
+                    <span>Bo&oumltis</span>
+                </div>
+                <div class="box eleven">
+                    <div></div>
+                    <div class="large-star">
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <div class="number">11</div>
+                    <span>Scorpii</span>
+                </div>
+                <div class="box twelve">
+                    <div></div>
+                    <div></div>
+                    <div class="number">12</div>
+                    <span>Bo&oumltis</span>
+                </div>
+                <div class="key">
+                    <h4>Plate XI. <span>Coloured Multiple Stars</span></h4>
+                    <p>1. &#946 Cygni 2. &#951 Persei 3. &#945 Canum Venaticorum. 4. &#946 Scorpii. 5. &#121 Delphini.
+                        6. &#121 Andromeda. 7. &#946 Orionis. <br> 8. &#953 Cassiopeia. 9. &#945 Herculis. 10. &#949
+                        Bo&oumltis. 11. &#945 Scorpii. 12. &#958 Bo&oumltis.</p>
+                    <p>N.B. For technical reasons the apparent diameters of the discs and diffraction rings of the
+                        brightest stars, and also their colours, are exaggerated considerably.</p>
+                </div>
+            </div>
+        </div>
+        <div class="section section-4"></div>
+    </div>
+</body>
+<script>
+    document.addEventListener('wheel', function (event) {
+        const delta = event.deltaY * 3.5;
+        document.querySelector('.scroll-container').scrollBy({
+            top: delta,
+            left: 0,
+            behavior: 'smooth'
+        });
+        event.preventDefault(); // 防止默认行为
+    }, { passive: false }); // 将 passive 设置为 false
+</script>

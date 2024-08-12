@@ -2,7 +2,8 @@
 // 无法灵活的在子页面使用import,在config中需分离数个出口文件,过于繁杂
 // 因此为方便后续使用,把html中需要再处理的内容挂载到window
 
-import home from './template/home.html';
+// import home from './template/home.html';
+import home from './template/newHome.html';
 import note from './template/note.html';
 import read from './template/read.html';
 import tool from './template/tool.html';
