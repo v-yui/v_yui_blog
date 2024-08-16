@@ -46,7 +46,21 @@ html{
     align-items: center;
     background-color: var(--wrapper-bg);
     transition: .2s linear;
+    overflow: hidden;
   }
+
+  #wrapper {
+    height: 100vh; /* 让容器高度等于视窗高度 */
+    overflow-y: scroll; /* 允许纵向滚动 */
+    -ms-overflow-style: none;  /* 适用于IE和Edge */
+    scrollbar-width: none;  /* 适用于Firefox */
+}
+
+/* 隐藏滚动条 */
+#wrapper::-webkit-scrollbar {
+    display: none;
+}
+
 // Home页导航条
 #mainNav {
     position: fixed;
@@ -56,6 +70,9 @@ html{
     height: 50px;
     background-color: @navBack;
     z-index: 100;
+    // display: flex;
+    // transform: translateY(0) !important;
+    transition: transform 0.3s ease-in-out;
 
     ol {
         margin: 0;

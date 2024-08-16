@@ -73,6 +73,12 @@
     const mainNav = document.getElementById('mainNav').children[0].children;
     const toGit = document.getElementById('gitLogo');
 
+    // nav栏滑动收放用的参数
+    // 由于子页面的滑动阻尼效果,暂时没有实现
+    // const scrollContainer = document.getElementById('wrapper');
+    // let lastScrollTop = 0;
+    // const header = document.getElementById('mainNav');
+
     // 为简化对子页面模块中需要执行的JS的处理,直接将其写在一个html中
     // 但innerHTML中的script不会执行，写一个函数来分离script标签中的内容
     function sliceStr(tempStr) {
@@ -102,12 +108,31 @@
             })
         }
         mainNav[0].click(); // 默认展示home页内容
+
         // 为gitHub的logo添加点击跳转
         toGit.addEventListener('click', () => {
             window.open("https://github.com/v-yui");
         })
     })
-    
+
+    // 上滑收起nav栏,下滑放出nav栏
+    // 监听 #wrapper 的 scroll 事件
+    // 由于子页面的滑动阻尼效果,暂时没有实现
+    // scrollContainer.addEventListener('scroll', function () {
+    //     let scrollTop = scrollContainer.scrollTop;
+    //     console.log(`Current ScrollTop: ${scrollTop}`); // 调试输出
+
+    //     if (scrollTop > lastScrollTop) {
+    //         // 向下滚动，隐藏标题栏
+    //         header.style.transform = 'translateY(-100px)';
+    //     } else {
+    //         // 向上滚动，显示标题栏
+    //         header.style.transform = 'translateY(0)';
+    //     }
+
+    //     lastScrollTop = scrollTop;
+    // });
+
     // 切换白天黑夜
     document.addEventListener('DOMContentLoaded', function () {
         var checkbox = document.querySelector('input[type="checkbox"]');
