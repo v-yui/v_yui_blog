@@ -100,9 +100,11 @@
     window.addEventListener('load', () => {
         // 为nav每个子条目添加点击事件以显示对应子页面
 
+        console.log(mainNav,'mainNav')
         for (let i = 0; i < 4; i++) {
             mainNav[i].addEventListener('click', () => {
                 let strObj = sliceStr(window.temp[i]);
+                console.log(strObj, 'strObj')
                 container.innerHTML = strObj.htmlStr;
                 eval(strObj.scriptStr);
             })
