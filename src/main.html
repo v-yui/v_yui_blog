@@ -48,23 +48,33 @@
             }
         }
     }
-    
-    window.addEventListener('load', () => {
-        // 为nav每个子条目添加点击事件以显示对应子页面
 
+    window.addEventListener('load', () => {
+        // 为 nav 每个子条目添加点击事件以显示对应子页面
         for (let i = 0; i < 4; i++) {
             mainNav[i].addEventListener('click', () => {
+
                 let strObj = sliceStr(window.temp[i]);
                 container.innerHTML = strObj.htmlStr;
-                eval(strObj.scriptStr);
-            })
+
+                // 在执行新页面的 script 前，确保所有 DOM 元素已加载
+                setTimeout(() => {
+                try {
+                    eval(strObj.scriptStr);
+                } catch (error) {
+                    console.error('Error in script execution:', error);
+                }
+            }, 0);
+            });
         }
-        mainNav[0].click(); // 默认展示home页内容
-        // 为gitHub的logo添加点击跳转
+
+        mainNav[0].click(); // 默认展示 home 页内容
+
+        // 为 GitHub 的 logo 添加点击跳转
         toGit.addEventListener('click', () => {
             window.open("https://github.com/v-yui");
-        })
-    })
+        });
+    });
 </script>
 
 </html>

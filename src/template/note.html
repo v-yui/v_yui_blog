@@ -1,4 +1,4 @@
-<body>  
+<body>
     <nav id="noteNav">
         <span id="nail"></span>
         <ol id="flipList">
@@ -30,6 +30,12 @@
     const noteBox = document.getElementById('noteBox');
     const readNode = noteNav.children[0].children[0];
     const selfNode = noteNav.children[1].children[0];
+    const gElement = document.querySelector('g');
+    if (gElement && gElement.children) {
+    // 处理 g 元素及其子元素
+} else {
+    console.warn('g element or its children not found');
+}
 
     // 为笔记列表添加点击事件
     function putNote(noteNode, noteName) {
