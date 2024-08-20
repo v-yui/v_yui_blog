@@ -26,82 +26,108 @@
     <article id="noteBox"></article>
 </body>
 <script>
-    // 示例 Markdown 内容
-    window.notes = {
-        'readNote': [
-            '# JS高级程序设计\n## 第一章\n内容一...\n## 第二章\n内容二...',
-            '# 图解HTTP\n## 第一章\n内容一...\n## 第二章\n内容二...',
-            '# CSS Mastery\n## 第一章\n内容一...\n## 第二章\n内容二...'
-        ],
-        'selfNote': [
-            '# node学习\n## 第一章\n内容一...\n## 第二章\n内容二...',
-            '# webpack学习\n## 第一章\n内容一...\n## 第二章\n内容二...',
-            // 其他个人笔记
-        ]
-    };
-
-    const noteBox = document.getElementById('noteBox');
     const noteNav = document.getElementById('flipList');
+    const noteBox = document.getElementById('noteBox');
     const readNode = noteNav.children[0].children[0];
     const selfNode = noteNav.children[1].children[0];
-
-    function parseMarkdown(markdown) {
-        // 使用简单的正则表达式解析 Markdown 标题
-        const sectionPattern = /(#+)\s*(.*)/g;
-        const sections = [];
-        let match;
-
-        while ((match = sectionPattern.exec(markdown)) !== null) {
-            const level = match[1].length;  // '#' 的个数表示标题级别
-            const title = match[2];  // 标题文本
-            sections.push({ level, title, startIndex: match.index });
-        }
-
-        // 根据提取到的标题，将内容分成不同章节
-        const chapters = [];
-        for (let i = 0; i < sections.length; i++) {
-            const start = sections[i].startIndex;
-            const end = i + 1 < sections.length ? sections[i + 1].startIndex : markdown.length;
-            chapters.push({
-                title: sections[i].title,
-                content: markdown.slice(start, end).trim()
-            });
-        }
-
-        return chapters;
+    const gElement = document.querySelector('g');
+    if (gElement && gElement.children) {
+        // 处理 g 元素及其子元素
+    } else {
+        console.warn('g element or its children not found');
     }
 
-    function generateChapterNavigation(chapters, noteBox) {
-        // 清空 noteBox 并创建章节导航
-        noteBox.innerHTML = '';
-
-        chapters.forEach((chapter, index) => {
-            const chapterLink = document.createElement('a');
-            chapterLink.textContent = chapter.title;
-            chapterLink.href = `#chapter-${index}`;
-            chapterLink.addEventListener('click', () => {
-                // 使用 marked.js 渲染 Markdown 内容
-                noteBox.innerHTML = marked.parse(chapter.content);
-            });
-            noteBox.appendChild(chapterLink);
-            noteBox.appendChild(document.createElement('br'));
-        });
-    }
-
-    function loadNoteSections(noteNode, noteName) {
+    // 为笔记列表添加点击事件
+    function putNote(noteNode, noteName) {
         const length = noteNode.children.length;
         for (let i = 0; i < length; i++) {
             noteNode.children[i].addEventListener('click', () => {
-                const markdownContent = window.notes[noteName][i];
-                const chapters = parseMarkdown(markdownContent);
-                generateChapterNavigation(chapters, noteBox);
-                // 默认显示第一个章节
-                noteBox.innerHTML = marked.parse(chapters[0].content);
-            });
+                noteBox.innerHTML = window.notes[noteName][i];
+            })
         }
     }
+    putNote(readNode, 'readNote');
+    putNote(selfNode, 'selfNote');
+    readNode.children[0].click(); // 默认展示JS高程笔记
+    const nail = document.getElementById('nail');
 
-    loadNoteSections(readNode, 'readNote');
-    loadNoteSections(selfNode, 'selfNote');
-    readNode.children[0].click(); // 默认展示 JS 高程笔记第一章
+    // 不成功的分章节展示代码
+    //  // 示例 Markdown 内容
+    //  window.notes = {
+    //     'readNote': [
+    //         '# JS高级程序设计\n## 第一章\n内容一...\n## 第二章\n内容二...',
+    //         '# 图解HTTP\n## 第一章\n内容一...\n## 第二章\n内容二...',
+    //         '# CSS Mastery\n## 第一章\n内容一...\n## 第二章\n内容二...'
+    //     ],
+    //     'selfNote': [
+    //         '# node学习\n## 第一章\n内容一...\n## 第二章\n内容二...',
+    //         '# webpack学习\n## 第一章\n内容一...\n## 第二章\n内容二...',
+    //         // 其他个人笔记
+    //     ]
+    // };
+
+    // const noteBox = document.getElementById('noteBox');
+    // const noteNav = document.getElementById('flipList');
+    // const readNode = noteNav.children[0].children[0];
+    // const selfNode = noteNav.children[1].children[0];
+
+    // function parseMarkdown(markdown) {
+    //     // 使用简单的正则表达式解析 Markdown 标题
+    //     const sectionPattern = /(#+)\s*(.*)/g;
+    //     const sections = [];
+    //     let match;
+
+    //     while ((match = sectionPattern.exec(markdown)) !== null) {
+    //         const level = match[1].length;  // '#' 的个数表示标题级别
+    //         const title = match[2];  // 标题文本
+    //         sections.push({ level, title, startIndex: match.index });
+    //     }
+
+    //     // 根据提取到的标题，将内容分成不同章节
+    //     const chapters = [];
+    //     for (let i = 0; i < sections.length; i++) {
+    //         const start = sections[i].startIndex;
+    //         const end = i + 1 < sections.length ? sections[i + 1].startIndex : markdown.length;
+    //         chapters.push({
+    //             title: sections[i].title,
+    //             content: markdown.slice(start, end).trim()
+    //         });
+    //     }
+
+    //     return chapters;
+    // }
+
+    // function generateChapterNavigation(chapters, noteBox) {
+    //     // 清空 noteBox 并创建章节导航
+    //     noteBox.innerHTML = '';
+
+    //     chapters.forEach((chapter, index) => {
+    //         const chapterLink = document.createElement('a');
+    //         chapterLink.textContent = chapter.title;
+    //         chapterLink.href = `#chapter-${index}`;
+    //         chapterLink.addEventListener('click', () => {
+    //             // 使用 marked.js 渲染 Markdown 内容
+    //             noteBox.innerHTML = marked.parse(chapter.content);
+    //         });
+    //         noteBox.appendChild(chapterLink);
+    //         noteBox.appendChild(document.createElement('br'));
+    //     });
+    // }
+
+    // function loadNoteSections(noteNode, noteName) {
+    //     const length = noteNode.children.length;
+    //     for (let i = 0; i < length; i++) {
+    //         noteNode.children[i].addEventListener('click', () => {
+    //             const markdownContent = window.notes[noteName][i];
+    //             const chapters = parseMarkdown(markdownContent);
+    //             generateChapterNavigation(chapters, noteBox);
+    //             // 默认显示第一个章节
+    //             noteBox.innerHTML = marked.parse(chapters[0].content);
+    //         });
+    //     }
+    // }
+
+    // loadNoteSections(readNode, 'readNote');
+    // loadNoteSections(selfNode, 'selfNote');
+    // readNode.children[0].click(); // 默认展示 JS 高程笔记第一章
 </script>
