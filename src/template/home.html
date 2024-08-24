@@ -3,7 +3,8 @@
         <h1>yui's</h1>
         <div>
             <!-- 日月交替沙漠效果 -->
-        <!-- <div id="day-night-container"> -->
+            <!-- 由于添加这部分效果会导致其他子页面的js解析不正常（推测是由于使用的g元素没有完全清除） -->
+            <!-- <div id="day-night-container"> -->
             <!-- <div class="day-night-transition">
                 <svg id="transition-scene" class="transition-scene" viewBox="-180 -185 890 890">
                     <defs>
@@ -361,10 +362,9 @@
                             </g>
                         </g>
                     </g>
-
                 </svg>
             </div> -->
-        <div id="sky">
+            <div id="sky">
                 <div id="sun"></div>
                 <div id="tree1" class="tree"></div>
                 <div id="tree2" class="tree"></div>
