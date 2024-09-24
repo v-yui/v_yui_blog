@@ -27,7 +27,8 @@
     "html-loader": "^1.3.2",
     "less": "^4.1.1",
     "less-loader": "^8.0.0",
-    "markdown-loader": "^6.0.0"
+    "markdown-loader": "^6.0.0",
+    "yui.github.io": "file:"
   },
   "devDependencies": {
     "@babel/core": "^7.12.13",
